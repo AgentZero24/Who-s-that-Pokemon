@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who's That Pokemon?</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div class="pokemon"> 
+        <p></p>
+        <img id="" src="" alt="">
+    </div>
+<script>
+        for (let i = 1; i <= 10; i++) {
+            // $('.pokemon').append("<img src='http://pokeapi.co/media/img/" + i + ".png'/>");
+             
+            $.get("https://pokeapi.co/api/v2/pokemon/"+ i, function(res) {
+            $(".pokemon img").attr("src",res.sprites.front_default);
+            console.log(res.sprites.front_default);
+            }, "json");   
+
+        } 
+      
+
+
+
+            
+</script>
+    
+</body>
+</html>           
