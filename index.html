@@ -9,23 +9,31 @@
 </head>
 <body>
     <div class="pokemon"> 
-        <p></p>
-        <img id="" src="" alt="">
     </div>
 <script>
-        for (let i = 1; i <= 10; i++) {
-            // $('.pokemon').append("<img src='http://pokeapi.co/media/img/" + i + ".png'/>");
-             
-            $.get("https://pokeapi.co/api/v2/pokemon/"+ i, function(res) {
-            $(".pokemon img").attr("src",res.sprites.front_default);
-            console.log(res.sprites.front_default);
+    $(document).ready(function(){
+        for (var i = 1; i <= 10; i++) {
+            // $('.pokemon').append("<img id='" + i + "'>");
+             $.get("https://pokeapi.co/api/v2/pokemon/"+ i, function(res) {           
+            $(".pokemon").append("<img src='"+res.sprites.front_default+ "' >");
+            // $("#"+i+"").attr("src",res.sprites.front_default);
+            console.log(i);
             }, "json");   
 
+
+            //alternate method
+            //  $.ajax({
+            //     url: "https://pokeapi.co/api/v2/pokemon/"+i,
+            //     dataType: 'json',
+            //     success: function(res){
+            //         $('.pokemon').append("<img src='" + res.sprites.front_default +"' >")
+            //         console.log(res.id);
+            //     }
+            //  });        
+
         } 
-      
 
-
-
+    });
             
 </script>
     
