@@ -12,42 +12,44 @@
         <div class="pokemon"> 
         </div>
         <div class="pokedex">
-            <h1>Name</h1>
-            <h2>Types</h2>
-                <p></p>
-            <h3>Height</h3>
-                <p></p>
-            <h4>Weight</h4>
-                <p></p>
         </div>
     </div>
 <script>
     $(document).ready(function(){
-        for (var i = 1; i <= 11; i++) {          
-            $(".pokemon").append("<img src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+ i +".png' alt='' id=" + i + ">");
+        for(var i = 1; i <=11; i++){
+            $(".pokemon").append("<img src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+ i +".png'  id=" + i + ">");
             console.log();
-            };         
-
-        } 
-        );
+        }
         $('img').click(function(){
-            $get('http://pokeapi.co/api/v2/pokemon/'+$(this).attr('id'), function(res){
+            $.get('http://pokeapi.co/api/v2/pokemon/'+$(this).attr('id'), function(res){
                 var header = res.species.name;
-                $('.info').append("<h1>" + name + "</h1>");
+                // console.log(header);
+                $('.pokedex').append("<h1>" + header + "</h1>");
 
                 var image = res.sprites.front_shiny;
-                $('.info').append("<img src'" + img + "'>")
+                console.log(image);
+                $('.pokedex').append("<img src'" + image + "'>")
 
-                    // for(var i =0; i<res.types.length, i++){
-                    // var types = res.types[i].typename;
-                    // $('.info').append("<p>''"+ types + "'</p>")
-                    // }
+                // for(var i =0; i<res.types.length, i++){
+                //     var types = res.types[i].typename;
+                //     $('.pokedex').append("<li>''"+ types + "'</li>")
+                //     }
+            
             },'json');
+
+            
+    })
+
+                
+
+                   
+            
         });
-   
+
      
             
 </script> 
     
 </body>
+</html>           
 </html>           
