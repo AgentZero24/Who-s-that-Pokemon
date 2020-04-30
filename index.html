@@ -8,34 +8,46 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
-    <div class="pokemon"> 
+    <div class="container">
+        <div class="pokemon"> 
+        </div>
+        <div class="pokedex">
+            <h1>Name</h1>
+            <h2>Types</h2>
+                <p></p>
+            <h3>Height</h3>
+                <p></p>
+            <h4>Weight</h4>
+                <p></p>
+        </div>
     </div>
 <script>
     $(document).ready(function(){
-        for (var i = 1; i <= 10; i++) {
-            // $('.pokemon').append("<img id='" + i + "'>");
-             $.get("https://pokeapi.co/api/v2/pokemon/"+ i, function(res) {           
-            $(".pokemon").append("<img src='"+res.sprites.front_default+ "' >");
-            // $("#"+i+"").attr("src",res.sprites.front_default);
-            console.log(i);
-            }, "json");   
-
-
-            //alternate method
-            //  $.ajax({
-            //     url: "https://pokeapi.co/api/v2/pokemon/"+i,
-            //     dataType: 'json',
-            //     success: function(res){
-            //         $('.pokemon').append("<img src='" + res.sprites.front_default +"' >")
-            //         console.log(res.id);
-            //     }
-            //  });        
+        for (var i = 1; i <= 11; i++) {          
+            $(".pokemon").append("<img src='http://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/"+ i +".png' alt='' id=" + i + ">");
+            console.log();
+            };         
 
         } 
+        );
+        $('img').click(function(){
+            $get('http://pokeapi.co/api/v2/pokemon/'+$(this).attr('id'), function(res){
+                var header = res.species.name;
+                $('.info').append("<h1>" + name + "</h1>");
 
-    });
+                var image = res.sprites.front_shiny;
+                $('.info').append("<img src'" + img + "'>")
+
+                    // for(var i =0; i<res.types.length, i++){
+                    // var types = res.types[i].typename;
+                    // $('.info').append("<p>''"+ types + "'</p>")
+                    // }
+            },'json');
+        });
+   
+     
             
-</script>
+</script> 
     
 </body>
 </html>           
